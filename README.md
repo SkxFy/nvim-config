@@ -1,7 +1,7 @@
 
-# Neovim Configuration
+# Neovim
 
-A minimal, personal Neovim setup for software development.
+A minimal, personal Neovim configuration for software development.
 
 ## Features
 
@@ -12,7 +12,7 @@ A minimal, personal Neovim setup for software development.
 - **LSP:** nvim-lspconfig
 - **Autocompletion:** blink.cmp
 
-Supports Java, C, Lua, Markdown, TypeScript, Vue, JSON, YAML, XML and other languages.
+Support for Java, C, Lua, Markdown, TypeScript, Vue, JSON, YAML, XML and more.
 
 ## Structure
 
@@ -67,16 +67,15 @@ Supports Java, C, Lua, Markdown, TypeScript, Vue, JSON, YAML, XML and other lang
 | `jk` / `kj` | Exit insert mode |
 | `Ctrl+Space` | Open completion menu |
 | `Ctrl+y` | Accept completion |
-| `u` | Undo |
-| `Ctrl+r` | Redo |
+| `u` / `Ctrl+r` | Undo / Redo |
 
 ### Spell Checking
 
-Automatically enabled for Markdown and text files.
+Automatically enabled for Markdown and text files (`de_ch`, `en_us`).
 
 | Key | Action |
 |---|---|
-| `]s` / `[s` | Navigate spelling errors |
+| `]s` / `[s` | Next / previous spelling error |
 | `z=` | Spelling suggestions |
 | `zg` | Add word to dictionary |
 | `:set spell!` | Toggle spell checking |
@@ -94,17 +93,61 @@ Automatically enabled for Markdown and text files.
 | `:terminal` | Open terminal |
 | `:e filename` | Open file |
 
+## Dependencies
+
+Plugins are managed by `lazy.nvim`. Language servers and external tools must be installed separately.
+
+### Requirements
+
+- Neovim 0.11.3+
+- Git
+- C compiler (GCC or Clang) — Treesitter parsers
+- Make — telescope-fzf-native
+- [ripgrep](https://github.com/BurntSushi/ripgrep) — Telescope live grep
+
+### Language Servers
+
+| Language | Server |
+|---|---|
+| C | clangd |
+| Java | jdtls |
+| Lua | lua-language-server |
+| Markdown | marksman |
+| TypeScript / JavaScript | typescript-language-server |
+| Vue | vue-language-server |
+| YAML | yaml-language-server |
+| XML | lemminx |
+| Bash | bash-language-server |
+| JSON | vscode-json-languageserver |
+| HTML | vscode-html-languageserver |
+| CSS | vscode-css-languageserver |
+
+Only install the servers you need. Some require additional runtimes such as Node.js or Java. Vue with TypeScript may require additional LSP configuration.
+
 ## Setup
 
-Requires Neovim 0.11.3+, Git and the corresponding language servers installed on the system.
+Install Neovim and the required dependencies using your system's package manager.
 
-Clone the configuration into `~/.config/nvim` and run:
+Clone the configuration:
+
+```bash
+git clone <repository-url> ~/.config/nvim
+```
+
+Open Neovim and install the plugins:
 
 ```vim
 :Lazy sync
 ```
 
-Language servers and external tools are managed separately through the system package manager.
+Verify the installation:
+
+```vim
+:checkhealth
+:checkhealth vim.lsp
+```
+
+Language servers must be available in your system's `PATH`.
 
 ## Philosophy
 
