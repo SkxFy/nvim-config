@@ -7,6 +7,14 @@ return {
                 "lua_ls",
                 "marksman",
                 "jdtls",
+                "ts_ls",
+                "vue_ls",
+                "yamlls",
+                "lemminx",
+                "bashls",
+                "jsonls",
+                "html",
+                "cssls",
             })
 
             vim.diagnostic.config({
